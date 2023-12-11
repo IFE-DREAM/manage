@@ -1,0 +1,23 @@
+spring:
+  datasource:
+    druid:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/j2ee
+      username: root
+      password: 123456
+  mvc:
+    pathmatch:
+      #Springfox使用的路径匹配是基于AntPathMatcher的，而Spring Boot 2.6.X使用的是PathPatternMatcher 解决knife4j匹配boot2.6.7 boot版本过高的问题
+      matching-strategy: ant_path_matcher
+
+
+mybatis-plus:
+  #mapper配置文件
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.neu.pojo
+  configuration:
+    #开启驼峰命名
+    map-underscore-to-camel-case: true
+    #开启延迟加载
+    lazy-loading-enabled: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
